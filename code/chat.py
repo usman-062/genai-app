@@ -4,6 +4,10 @@ from langchain.chat_models import init_chat_model
 from langchain.messages import SystemMessage, HumanMessage, AIMessage
 
 load_dotenv() # Read .env file 
+
+model_name = os.getenv("MODEL_Name")
+if not model_name:
+    raise SystemError("MODEL_Name is not set in the .env file.")
 llm = init_chat_model(
     model=os.getenv("MODEL_Name"),
     temperature=os.getenv(key="TEMPERATURE"),
@@ -25,7 +29,12 @@ history = [
 print("Welcome to Cue chat!")
 
 while True:
-    question = input("you: ").strip()
+    try:
+        question = input("you: ").strip()
+
+    except (KeyboardInterrupt,EOFError):
+        print("\n Goodbye!")
+        break
 
     if not question:
         print("Please enter a question.")
