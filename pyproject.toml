@@ -1,0 +1,16 @@
+[project]
+name = "genai-app"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "usman-062", email = "ahmadalibhatti62@gmail.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "ipykernel>=7.4.0",
+    "langchain>=1.4.4",
+    "langchain-ollama>=1.1.0",
+    "python-dotenv>=1.2.4",
+]
+
